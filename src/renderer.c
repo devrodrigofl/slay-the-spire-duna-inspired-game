@@ -69,41 +69,41 @@ void FillRenderer(Renderer* renderer) {
 
   //load the background images
   renderer->background_1 = 
-      al_load_bitmap("assets/back 1.png");
+      al_load_bitmap("assets/background/background_layer_one.png");
   must_init(renderer->background_1, "back1");
 
   renderer->background_2 = 
-      al_load_bitmap("assets/back 2.png");
+      al_load_bitmap("assets/background/background_layer_two.png");
   must_init(renderer->background_2, "back2");
 
   renderer->background_3 = 
-      al_load_bitmap("assets/back 3.png");    
+      al_load_bitmap("assets/background/background_layer_three.png");    
   must_init(renderer->background_3, "back3");
 
   renderer->background_4 = 
-      al_load_bitmap("assets/back 4.png");    
+      al_load_bitmap("assets/background/background_layer_four.png");    
   must_init(renderer->background_4, "back4");
 
   //load the card images
   renderer->card_attack = 
-      al_load_bitmap("assets/card_attack.png");
+      al_load_bitmap("assets/card/card_attack.png");
   must_init(renderer->card_attack, "card_attack");
 
   renderer->card_defense = 
-      al_load_bitmap("assets/card_defense.png");
+      al_load_bitmap("assets/card/card_defense.png");
   must_init(renderer->card_defense, "card_defense");
 
   renderer->card_hybrid = 
-      al_load_bitmap("assets/card_hybrid.png");
+      al_load_bitmap("assets/card/card_hybrid.png");
   must_init(renderer->card_hybrid, "card_hybrid");
 
   renderer->card_especial = 
-      al_load_bitmap("assets/card_especial.png");
+      al_load_bitmap("assets/card/card_especial.png");
   must_init(renderer->card_especial, "card_especial");
   
   //load the player_idle
   for (int i = 0; i < 12; i++) {
-    char filename[50];
+    char filename[60];
 
       sprintf(filename, "assets/player_idle/player_idle_%d.png", i + 1); 
         
@@ -113,12 +113,12 @@ void FillRenderer(Renderer* renderer) {
 
   //load the strong_enemy_idle
   for (int i = 0; i < 16; i++) {
-    char filename[50];
+    char filename[60];
 
       if(i < 9) {
-        sprintf(filename, "assets/weak_enemy_idle/Idle_Body_270_000%d.png", i + 1); 
+        sprintf(filename, "assets/enemies/weak_enemy_idle/Idle_Body_270_000%d.png", i + 1); 
       }
-      else sprintf(filename, "assets/weak_enemy_idle/Idle_Body_270_00%d.png", i + 1);
+      else sprintf(filename, "assets/enemies/weak_enemy_idle/Idle_Body_270_00%d.png", i + 1);
         
       renderer->weak_enemy_idle[i] = al_load_bitmap(filename);
       must_init(renderer->weak_enemy_idle[i], filename);
@@ -126,35 +126,35 @@ void FillRenderer(Renderer* renderer) {
 
   //load the weak_enemy
   renderer->strong_enemy = 
-      al_load_bitmap("assets/strong_enemy.png");
+      al_load_bitmap("assets/enemies/strong_enemy.png");
   must_init(renderer->strong_enemy, "strong_enemy");
 
   //load the boss_enemy
   renderer->boss_enemy = 
-      al_load_bitmap("assets/boss_enemy.png");
+      al_load_bitmap("assets/enemies/boss_enemy.png");
   must_init(renderer->boss_enemy, "boss_enemy");
 
   //load the health bar and shield bar
   renderer->health_bar = 
-      al_load_bitmap("assets/health_bar.png");
+      al_load_bitmap("assets/stats_info/health_bar.png");
   must_init(renderer->health_bar, "health_bar");
 
   renderer->shield_bar = 
-      al_load_bitmap("assets/shield_bar.png");
+      al_load_bitmap("assets/stats_info/shield_bar.png");
   must_init(renderer->shield_bar, "shield_bar");
 
   //load the energy
   renderer->energy_indicator = 
-      al_load_bitmap("assets/energy.png");
+      al_load_bitmap("assets/stats_info/energy.png");
   must_init(renderer->energy_indicator, "energy");
 
   //load the deck and discard piles
   renderer->discard_pile = 
-      al_load_bitmap("assets/discard_pile.png");
+      al_load_bitmap("assets/card/discard_pile.png");
   must_init(renderer->discard_pile, "energy");
 
   renderer->deck_pile = 
-      al_load_bitmap("assets/deck_pile.png");
+      al_load_bitmap("assets/card/deck_pile.png");
   must_init(renderer->deck_pile, "energy");
 
   renderer->font = al_create_builtin_font();
@@ -359,11 +359,11 @@ void RenderEnemyAction(Renderer* renderer, int i, int x_left, int y_top) {
   char text[100] = "";
   ALLEGRO_COLOR color = al_map_rgb(255, 255, 255);
 
-    if (renderer->manager->enemies->enemy[0].actions[renderer->manager->enemies->enemy->action_count].type == attack) {
+    if (renderer->manager->enemies->enemy[i].actions[renderer->manager->enemies->enemy->action_count].type == attack) {
         sprintf(text, "Attack: %d", renderer->manager->enemies->enemy[i].actions[renderer->manager->enemies->enemy->action_count].effect);
         color = al_map_rgb(200, 0, 0);
     } 
-    else if (renderer->manager->enemies->enemy[0].actions[renderer->manager->enemies->enemy->action_count].type == defense) {
+    else if (renderer->manager->enemies->enemy[i].actions[renderer->manager->enemies->enemy->action_count].type == defense) {
         sprintf(text, "Defense: %d", renderer->manager->enemies->enemy[i].actions[renderer->manager->enemies->enemy->action_count].effect);
         color = al_map_rgb(0, 0, 200);
     }

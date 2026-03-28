@@ -45,7 +45,7 @@ int numActions(EnemyType type) {
 
 int actionsCost(EnemyType type) {
     switch (type) {
-        case weak: return rand() % 2;
+        case weak: return 1 + (rand() % 2);
         case strong: return 1 + (rand() % 3);
         case boss: return 2 + (rand() % 3);
         default: return 0;
@@ -155,7 +155,7 @@ void buildEnemyGroup(EnemyGroup* group, int current_round) {
     
     for (int i = 0; i < group->count; i++) {
         //strong enemy probability
-        if (!strong_spawned && (rand() % 100 < 5)) { 
+        if (!strong_spawned && (rand() % 100 < 20)) { 
             group->enemy[i].type = strong;
             buildEnemy(&group->enemy[i]);
             strong_spawned = 1;

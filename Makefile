@@ -2,9 +2,11 @@ CC = gcc
 
 OS := $(shell uname)
 
+INCLUDES = -I./include
+
 ifeq ($(OS), Darwin)
 	# macOS
-	CFLAGS = $(shell pkg-config --cflags allegro-5 allegro_main-5 allegro_font-5 allegro_image-5 allegro_primitives-5 allegro_audio-5 allegro_acodec-5)
+	CFLAGS = $(INCLUDES) $(shell pkg-config --cflags allegro-5 allegro_main-5 allegro_font-5 allegro_image-5 allegro_primitives-5 allegro_audio-5 allegro_acodec-5)
 	LDFLAGS = $(shell pkg-config --libs allegro-5 allegro_main-5 allegro_font-5 allegro_image-5 allegro_primitives-5 allegro_audio-5 allegro_acodec-5) -lm
 else
 	# Linux
@@ -12,16 +14,16 @@ else
 	LDFLAGS = -lm
 endif
 
-SRCS = main.c utils.c renderer.c entities.c cards.c combat.c
+SRCS = src/main.c src/utils.c src/renderer.c src/entities.c src/cards.c src/combat.c
 
 all: clean game run
 
 clean:
-	rm -f game
+	rm -rf game game.out game.dSYM
 
 ifeq ($(OS), Darwin)
 game:
-	$(CC) $(SRCS) -o game -g $(CFLAGS) $(LDFLAGS)
+	$(CC) $(SRCS) -o game $(CFLAGS) $(LDFLAGS)
 else
 game:
 	$(CC) $(SRCS) -o game.out \

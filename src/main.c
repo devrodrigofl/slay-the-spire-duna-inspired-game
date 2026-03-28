@@ -25,7 +25,7 @@ int main() {
   
   srand(time(0));
 
-  ALLEGRO_SAMPLE* song = al_load_sample("assets/menu_theme.ogg");
+  ALLEGRO_SAMPLE* song = al_load_sample("assets/sound/menu_theme.ogg");
   must_init(song, "music file");
 
   ALLEGRO_SAMPLE_INSTANCE* songInstance = al_create_sample_instance(song);
