@@ -1,0 +1,61 @@
+#ifndef _CONSTANTS_H_
+#define _CONSTANTS_H_
+
+#define GAME_KEY_SEEN 1
+#define GAME_KEY_DOWN 2
+
+#define DISPLAY_BUFFER_WIDTH 1280.0
+#define DISPLAY_BUFFER_HEIGHT 720.0
+
+#define DISPLAY_SCALE 1.0
+#define DISPLAY_WIDTH DISPLAY_SCALE* DISPLAY_BUFFER_WIDTH
+#define DISPLAY_HEIGHT DISPLAY_SCALE* DISPLAY_BUFFER_HEIGHT
+
+#define DRAW_DECK_X 50
+#define DRAW_DECK_Y 550
+
+#define DECK_WIDTH 180
+#define DECK_HEIGHT 180
+
+#define PLAYER_BEGIN_X 220
+#define PLAYER_BEGIN_Y 160
+
+#define PLAYER_WIDTH 170
+#define PLAYER_HEIGHT 220
+
+#define HEALTH_BAR_WIDTH 270
+#define HEALTH_BAR_HEIGHT 64
+#define HEALTH_BAR_BACKGROUND_EXTRA 1
+
+#define HEALTH_BAR_RX 0
+#define HEALTH_BAR_RY 0
+
+#define ENEMY_ACTION_X 1090
+#define ENEMY_ACTION_Y 200
+
+#define HAND_BEGIN_X 346
+#define HAND_BEGIN_Y 550
+
+#define CARD_WIDTH 156
+#define CARD_HEIGHT 211
+
+#define ENEMY_BEGIN_X 856
+#define ENEMY_BEGIN_Y 15
+
+#define ENEMY_WIDTH 270
+#define ENEMY_HEIGHT 270
+
+#define ENEMY_HEALTH_BAR 200
+
+#define ENERGY_WIDTH 220
+#define ENERGY_HEIGHT 220
+
+#define TOTAL_ROUNDS 11
+
+// You might want to use this.
+typedef enum {
+  MOVE_LEFT = 0,
+  MOVE_RIGHT = 1,
+} CursorMovementDirection;
+
+#endif
